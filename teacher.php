@@ -13,8 +13,8 @@
 
 <form action="teacher.php" method="post" name="myForm" role="form">
 <div class="form-group">
-	<h3>Click button to see all teachers of CSE-RU</h3>
-	<input type="submit" name="btn_submit" value="all teachers" class="btn btn-danger">
+	<h3>Click button to see all lecturers of CS-FPTB</h3>
+	<input type="submit" name="btn_submit" value="all lecturers" class="btn btn-danger">
 </div>
 </form><br/>
 

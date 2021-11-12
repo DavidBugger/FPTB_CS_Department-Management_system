@@ -8,13 +8,13 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li>
-                    <h3 style="color:#FAFAFA;"><b>CSE-RU</b></h3>
+                    <h3 style="color:#FAFAFA;"><b>CS-FPTB</b></h3>
                 </li>
                 <li>
                     <a href="index.php">Home</a>
                 </li>
                 <li>
-                    <a href="teacher.php">Teachers</a>
+                    <a href="teacher.php">Lecturers</a>
                 </li>
                 <li>
                     <a href="routine.php">Routine</a>
@@ -23,10 +23,10 @@
                     <a href="course.php">Syllabus</a>
                 </li>
                 <li>
-                    <a href="room.php">Room</a>
+                    <a href="room.php">Offices/Lab</a>
                 </li>
 				<li>
-                    <a href="login.php">User</a>
+                    <a href="login.php">Student Login</a>
                 </li>
                 <li>
                     <a href="admin_login.php">Admin</a>

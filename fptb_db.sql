@@ -1,23 +1,25 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2016 at 09:01 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.9
+-- Generation Time: Nov 12, 2021 at 07:04 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dept`
+-- Database: `fptb_db`
 --
 
 -- --------------------------------------------------------
@@ -26,11 +28,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `user_name` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `user_name`, `password`) VALUES
-(1, 'masum', '1234');
+(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -46,27 +47,26 @@ INSERT INTO `admin` (`id`, `user_name`, `password`) VALUES
 -- Table structure for table `course`
 --
 
-CREATE TABLE IF NOT EXISTS `course` (
-  `co_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `course` (
+  `co_id` int(11) NOT NULL,
   `course_code` text NOT NULL,
   `name` text NOT NULL,
   `type` text NOT NULL,
   `year` text NOT NULL,
-  `credit` int(11) NOT NULL,
-  PRIMARY KEY (`co_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
+  `credit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course`
 --
 
 INSERT INTO `course` (`co_id`, `course_code`, `name`, `type`, `year`, `credit`) VALUES
-(1, 'ENG1111', 'Technical English', 'Theory', '1-1', 2),
-(2, 'MATH1111', 'Algebra, Trigonometry and Vector', 'Theory', '1-1', 3),
-(3, 'CHEM1111', 'Physical and Inorganic Chemistry', 'Theory', '1-1', 3),
-(4, 'CSE1111', 'Computer Fundamentals', 'Theory', '1-1', 3),
-(5, 'CSE1112', 'Computer Maintenance and Engineering Drawings Lab', 'Lab', '1-1', 1),
-(6, 'APEE1131', 'Electrical Circuit and Electronics', 'Theory', '1-1', 3),
+(1, 'COM 311', 'Operating System I', 'Theory', '3-1', 3),
+(2, 'COM 312', 'Database Design I', 'Theory/Lab', '3-1', 3),
+(3, 'COM 313', 'Computer Programming using C++', 'Theory', '3-1', 3),
+(4, 'COM 314', 'Computer Architecture ', 'Theory', '3-1', 2),
+(5, 'STA 314', 'Operational Research I', 'Statistics', '3-1', 3),
+(6, 'OTM 315', 'Business Communication I', 'Theory', '3-1', 2),
 (7, 'APEE1132', 'Electrical Circuit and Electronics Lab', 'Lab', '1-1', 1),
 (8, 'CSE1121', 'Computer Programming with C', 'Theory', '1-1', 3),
 (9, 'CSE1122', 'Computer Programming with C Lab', 'Lab', '1-1', 2),
@@ -145,13 +145,12 @@ INSERT INTO `course` (`co_id`, `course_code`, `name`, `type`, `year`, `credit`) 
 -- Table structure for table `hall`
 --
 
-CREATE TABLE IF NOT EXISTS `hall` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `hall` (
+  `id` int(11) NOT NULL,
   `hall_name` varchar(255) NOT NULL,
   `provost_name` varchar(50) NOT NULL,
-  `capability` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `capability` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hall`
@@ -181,13 +180,12 @@ INSERT INTO `hall` (`id`, `hall_name`, `provost_name`, `capability`) VALUES
 -- Table structure for table `notice`
 --
 
-CREATE TABLE IF NOT EXISTS `notice` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `notice` (
+  `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `message` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notice`
@@ -203,8 +201,8 @@ INSERT INTO `notice` (`id`, `title`, `message`, `time`) VALUES
 -- Table structure for table `result`
 --
 
-CREATE TABLE IF NOT EXISTS `result` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `result` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `session` varchar(50) NOT NULL,
   `year` varchar(20) NOT NULL,
@@ -212,16 +210,15 @@ CREATE TABLE IF NOT EXISTS `result` (
   `roll` int(15) NOT NULL,
   `individual_result` text NOT NULL,
   `total_result` double NOT NULL,
-  `grade` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+  `grade` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `result`
 --
 
 INSERT INTO `result` (`id`, `name`, `session`, `year`, `semester`, `roll`, `individual_result`, `total_result`, `grade`) VALUES
-(1, 'MD.Fazle Rabby', '2015-2016', '1st', 'Odd', 1610476110, 'Eng1111-3.50,Math1111-3.75,Chem1111-2.75,CSE1111-3.75,CSE1112-3.25,CSE1121-3.25,CSE1122-3.5,APEE1131-3.00,APEE1132-3.5', 3.5, 'A-'),
+(1, 'MD.Fazle Rabby', '2018-2019', '1st', 'Even', 18, 'Eng1111-3.50,Math1111-3.75,Chem1111-2.75,CSE1111-3.75,CSE1112-3.25,CSE1121-3.25,CSE1122-3.5,APEE1131-3.00,APEE1132-3.5', 3.5, 'A+'),
 (2, 'Rafiul Islam', '2015-2016', '1st', 'Odd', 1610476142, 'Eng1111-3.00,Math1111-3.25,Chem1111-3.75,CSE1111-3.25,CSE1112-3.25,CSE1121-3.25,CSE1122-3.5,APEE1131-3.20,APEE1132-3.5', 3.43, 'B+'),
 (3, 'Younus Hassan', '2015-2016', '1st', 'Odd', 1610176121, 'Eng1111-3.25,Math1111-3.25,Chem1111-3.50,CSE1111-3.25,CSE1112-3.25,CSE1121-3.75,CSE1122-3.5,APEE1131-3.50,APEE1132-3.25', 3.35, 'B+'),
 (4, 'Maruful Alom', '2015-2016', '1st', 'Odd', 1610976127, 'Eng1111-3.75,Math1111-3.75,Chem1111-3.5,CSE1111-3.25,CSE1112-3.25,CSE1121-3.25,CSE1122-3.5,APEE1131-3.70,APEE1132-3.75', 3.68, 'A-'),
@@ -254,16 +251,13 @@ INSERT INTO `result` (`id`, `name`, `session`, `year`, `semester`, `roll`, `indi
 -- Table structure for table `room`
 --
 
-CREATE TABLE IF NOT EXISTS `room` (
-  `room_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `room` (
+  `room_id` int(11) NOT NULL,
   `room_no` int(11) NOT NULL,
   `room_name` text NOT NULL,
   `room_type` text NOT NULL,
-  `room_capacity` int(11) NOT NULL,
-  PRIMARY KEY (`room_id`),
-  KEY `room_no` (`room_no`),
-  KEY `room_id` (`room_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `room_capacity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `room`
@@ -287,8 +281,8 @@ INSERT INTO `room` (`room_id`, `room_no`, `room_name`, `room_type`, `room_capaci
 -- Table structure for table `routine`
 --
 
-CREATE TABLE IF NOT EXISTS `routine` (
-  `r_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `routine` (
+  `r_id` int(11) NOT NULL,
   `week` text NOT NULL,
   `year` varchar(20) NOT NULL,
   `session` varchar(20) NOT NULL,
@@ -296,9 +290,8 @@ CREATE TABLE IF NOT EXISTS `routine` (
   `course_code` int(11) NOT NULL,
   `time` text NOT NULL,
   `teacher_id` text NOT NULL,
-  `room_no` int(11) NOT NULL,
-  PRIMARY KEY (`r_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=71 ;
+  `room_no` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `routine`
@@ -381,16 +374,15 @@ INSERT INTO `routine` (`r_id`, `week`, `year`, `session`, `type`, `course_code`,
 -- Table structure for table `student`
 --
 
-CREATE TABLE IF NOT EXISTS `student` (
-  `s_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `student` (
+  `s_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `roll` varchar(20) NOT NULL,
   `session` varchar(20) NOT NULL,
   `year` varchar(20) NOT NULL,
   `hall_id` int(10) DEFAULT NULL,
-  `gpa` double DEFAULT NULL,
-  PRIMARY KEY (`s_id`,`roll`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=66 ;
+  `gpa` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
@@ -413,6 +405,7 @@ INSERT INTO `student` (`s_id`, `name`, `roll`, `session`, `year`, `hall_id`, `gp
 (15, 'Ruhul Amin', '1610676102', '2015-2016', 'First', 6, 0),
 (16, 'MD.Al Shahriar', '1611076145', '2015-2016', 'First', 10, 0),
 (17, 'Mehedi Hasan', '1610176148', '2015-2016', 'First', 1, 0),
+(18, 'Weng Ibrahim', '023', '2021/2022', '2021', 1, 3.5),
 (18, 'Abdullah Al Shiam', '13065401', '2012-2013', 'Third', 6, 3.14),
 (19, 'Abdullah Al Hares', '13115432', '2012-2013', 'Third', 7, 3),
 (20, 'A S M Ashraful Haque', '13025451', '2012-2013', 'Third', 11, 3.05),
@@ -460,7 +453,10 @@ INSERT INTO `student` (`s_id`, `name`, `roll`, `session`, `year`, `hall_id`, `gp
 (62, 'Josim', '16075412', '2015-2016', 'first', 0, 3.2),
 (63, 'Rafiqul Islam', '1610476324', 'first', '2015-16', 0, 3.2),
 (64, 'Rafiqul Islam', '130154072', '2012-2013', 'third', 11, 3.4),
-(65, 'Rafiqul Islam', '130154072', '2012-2013', 'third', 11, 3.4);
+(65, 'Rafiqul Islam', '130154072', '2012-2013', 'third', 11, 3.4),
+(66, 'Weng Ibrahim', '18/023', '2020/2021', '2021', 1234, 3.67),
+(67, 'Weng Ibrahim ', '018', '2021/2022', '2021', 1234, 3.5),
+(68, 'Akanang David ', '18/023', '2018/2020', '2021', 1234, 3.5);
 
 -- --------------------------------------------------------
 
@@ -468,17 +464,16 @@ INSERT INTO `student` (`s_id`, `name`, `roll`, `session`, `year`, `hall_id`, `gp
 -- Table structure for table `student_details`
 --
 
-CREATE TABLE IF NOT EXISTS `student_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `student_details` (
+  `id` int(11) NOT NULL,
   `Present_address` varchar(255) NOT NULL,
   `permanent_address` varchar(255) NOT NULL,
   `fathers_name` varchar(255) NOT NULL,
   `mothers_name` varchar(255) NOT NULL,
   `mobile` varchar(20) NOT NULL,
   `ssc_gpa` double NOT NULL,
-  `hsc_gpa` double NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+  `hsc_gpa` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_details`
@@ -552,25 +547,24 @@ INSERT INTO `student_details` (`id`, `Present_address`, `permanent_address`, `fa
 -- Table structure for table `teachers`
 --
 
-CREATE TABLE IF NOT EXISTS `teachers` (
-  `t_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `teachers` (
+  `t_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `type` varchar(100) NOT NULL,
   `qualification` text NOT NULL,
   `course` varchar(255) NOT NULL,
   `research` text NOT NULL,
-  `status` varchar(100) NOT NULL,
-  PRIMARY KEY (`t_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+  `status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teachers`
 --
 
 INSERT INTO `teachers` (`t_id`, `name`, `type`, `qualification`, `course`, `research`, `status`) VALUES
-(1, 'Dr.Somlal Das', 'Chairman', 'M.Sc. (Raj),Ph.D. (Raj)', 'Object Oriented Programming with Java,\nDatabase Management Systems,\nParallel Processing and Distributed System', 'Digital Signal Processing,Speech Enhancement', 'Present'),
-(2, 'Dr. Abu Raihan Shoyeb Ahmed Siddique', 'Professor', 'M.Sc. (Raj). Ph.D. (Raj)\r\n', 'Computer Maintenance and Engineering Drawings Lab,Computer Graphics,Computer Graphics Lab,Computer Simulation and Modeling,Computer Simulation and Modeling Lab', 'N/A\r\n', 'Present'),
-(3, 'Dr. A. K. M. Akhtar Hossain', 'Professor', 'M.Sc. (Raj), Ph.D. (Raj)', 'N/A', 'N/A', 'Present'),
+(1, 'Dr.Ahmadu Maidorawa', 'Chairman', 'M.Sc. ,Ph.D. ', 'Object Oriented Programming with Java,\r\nParallel Processing and Distributed System', 'Digital Signal Processing,Speech Enhancement', 'Present'),
+(2, 'Mallam Hassan Abubakar ', 'Professor', 'M.Sc. (Raj). Ph.D. (Raj)\r\n', 'Database Management Systems', 'N/A\r\n', 'Present'),
+(3, 'Mallam Abubakar Gwani', 'Professor', 'M.Sc. (Raj), Ph.D. (Raj)', 'N/A', 'N/A', 'Present'),
 (4, 'Dr. Md. Khademul Islam Molla', 'Professor', 'M.Sc. (Sylhet), Ph.D. (Japan)', 'Digital Signal Processing,\nDigital Signal Processing Lab,\nDigital Image Processing,\nDigital Image Processing Lab', 'Theory and applications of signal processing,\nClimate data analysis,\nSignal processing for biomedical applications and computational neuroscience.', 'Present'),
 (5, 'Dr. Shamim Ahmad\r\n', 'Professor', 'M.Sc. (Raj) D.Engg. (Japan)', 'Computer Programming With C,\nComputer Networks,\nDiscrete Mathematics', 'Embedded System,\nImage Processing,\nIntelligent Computing', 'Present'),
 (6, 'Dr. Md. Ekramul Hamid\r\n', 'Professor', 'M.Sc. (Raj), M.C.S (India), Ph.D. (Japan)', 'Electrical Circuit and Electronics,\nIntroduction to Digital Electronics', 'Speech Enhancement, Speech noise reduction, Speech feature extraction,\nDigital Signal Processing,\nImage Signal Processing and Computer Vision.', 'Present'),
@@ -599,12 +593,11 @@ INSERT INTO `teachers` (`t_id`, `name`, `type`, `qualification`, `course`, `rese
 -- Table structure for table `teacher_login`
 --
 
-CREATE TABLE IF NOT EXISTS `teacher_login` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `teacher_login` (
+  `id` int(11) NOT NULL,
   `user_name` varchar(20) NOT NULL,
-  `password` int(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `password` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher_login`
@@ -622,8 +615,8 @@ INSERT INTO `teacher_login` (`id`, `user_name`, `password`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -637,22 +630,169 @@ CREATE TABLE IF NOT EXISTS `users` (
   `year` varchar(20) NOT NULL,
   `cgpa` double DEFAULT NULL,
   `hall` varchar(100) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  UNIQUE KEY `email` (`email`),
-  KEY `id` (`id`),
-  KEY `id_2` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `fathers_name`, `mothers_name`, `present_address`, `permanent_address`, `age`, `roll_number`, `session`, `year`, `cgpa`, `hall`, `image`) VALUES
-(17, 'Muktadir Ahmed', 'masumcse2012@gmail.com', '123', 'Kazol Ahmed', 'Mst.Chameli Begum', 'Rajshahi', 'Chapai Nawabgonj', '23', '12045402', '2011-12', '4th', 3.5, 'Syed Amir Ali', 'pics/masumcse2012@gmail.com.jpg'),
-(22, 'muktadir', 'masumcse@gmail.com', '1234', '', '', '', '', '', '', '', '', NULL, '', ''),
-(19, 'Rafiqul Islam', 'rafiq@gmail.com', '1234', 'Abul kashem ', 'Ferdousi begum', 'Rajshahi', 'Mymensing', '23', '12045404', '2011-2012', '4th', 3.42, 'Syed Amir Ali', 'pics/rafiq@gmail.com.jpeg'),
-(16, 'a', 'y@yahoo.com', '123', 'sdsd', 'sfsdsdsd', 'sdsdsds', 'sdsdsd', 'sdsdsd', 'dsdsdsd', 'sdsdsd', 'sdsd', 0, 'dsdsds', 'pics/y@yahoo.com.jpeg'),
-(18, 'fddf', 'zayed@gmail.com', '1234', '', '', '', '', '', '', '', '', NULL, '', '');
+(30, 'David', 'davidakanang@gmail.com', '1234', 'Ignatius', 'Joyce', 'Jos', 'Bokkos', '24', '18/126023', '2018/2020', '2021', 3.5, 'CS', 'pics/davidakanang@gmail.com.jpg'),
+(19, 'Weng ', 'rafiq@gmail.com', '1234', 'Ibrahim', 'Juan', 'Bauchi', 'Bokkos', '24', '20/018', '2021/2022', '2021', 3.5, 'CS', 'pics/rafiq@gmail.com.jpg'),
+(29, 'Weng Ibrahim', 'wengcs2021@gmail.com', '1234', 'Ibrahim', 'Milan', 'Bauchi', 'Bokkos', '24', '018', '2021/2022', '2021', 3.5, 'CS', 'pics/wengcs2021@gmail.com.jpg'),
+(18, 'Akanang David ', 'zayed@gmail.com', '1234', 'Ignatius', 'Joyce', 'Joyce', 'Bokkos', '24', '18/126023', '2018/2020', '2021', 3.67, 'CS', 'pics/zayed@gmail.com.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`co_id`);
+
+--
+-- Indexes for table `hall`
+--
+ALTER TABLE `hall`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notice`
+--
+ALTER TABLE `notice`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `result`
+--
+ALTER TABLE `result`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `room`
+--
+ALTER TABLE `room`
+  ADD PRIMARY KEY (`room_id`),
+  ADD KEY `room_no` (`room_no`),
+  ADD KEY `room_id` (`room_id`);
+
+--
+-- Indexes for table `routine`
+--
+ALTER TABLE `routine`
+  ADD PRIMARY KEY (`r_id`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`s_id`,`roll`);
+
+--
+-- Indexes for table `student_details`
+--
+ALTER TABLE `student_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`t_id`);
+
+--
+-- Indexes for table `teacher_login`
+--
+ALTER TABLE `teacher_login`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `id` (`id`),
+  ADD KEY `id_2` (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `co_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
+--
+-- AUTO_INCREMENT for table `hall`
+--
+ALTER TABLE `hall`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `notice`
+--
+ALTER TABLE `notice`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `result`
+--
+ALTER TABLE `result`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `room`
+--
+ALTER TABLE `room`
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `routine`
+--
+ALTER TABLE `routine`
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT for table `student_details`
+--
+ALTER TABLE `student_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `teacher_login`
+--
+ALTER TABLE `teacher_login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

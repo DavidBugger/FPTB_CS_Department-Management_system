@@ -11,8 +11,8 @@
 
 <form action="room.php" method="post">
 <div class="form-group">
-	<h3>Click button to see room details of the Department</h3>
-	<input type="submit" name="btn_submit" value="All Rooms" class="btn btn-danger">
+	<h3>Click button to see offices and laboratories details of the Department</h3>
+	<input type="submit" name="btn_submit" value="All Offfices/labs" class="btn btn-danger">
 </div>
 </form><br/>
 

@@ -7,16 +7,16 @@
         <div class="panel panel-default">
         <div class="panel-body">
 
-<center><h1>Department of Computer Science and Engineering</h1>
-		<b>Founded on: 1993</b></center>
+<center><h1>Department of Computer Science</h1>
+		<b>Founded on: 1994</b></center>
     <hr>
 
     	<div class="col-sm-6">
     		<b>Degree offers with duration:</b>
     		<ul>
-    			<li>Four years program, B.Sc. (Engg.)</li>
-				<li>Two years program, M.Sc.(Engg.)</li>
-				<li>Minimum two years research program, M.Phil</li>
+    			<li>Two years program, (HND.)</li>
+				<li>Two years program, (ND.)</li>
+				<li>Minimum two years Post Graduate Studies</li>
 				<li>Minimum three years research program, PhD</li>
 				<li>Professional Degree: PDG in IT (one year)</li>
     		</ul>
@@ -42,7 +42,7 @@
 			<br>
 				<br>
 			<b>Admission:</b><br>
-			<p>Admission process starts in early July of each year. The local student will be notified through daily newspaper. The International student have to apply through Bangladeshi mission located in their country, for further information visit www.dept.ru.ac.bd/cse or email us cse@dept.ru.ac.bd</p>
+			<p>Admission process starts in early July of each year. The local student will be notified through daily newspaper. The International student have to apply through https://fptb.edu.ng/admissions website, for further information visit www.cs.fptb.edu.ng or email us csfptb@gmail.com</p>
     	</div>
     	<div class="col-sm-6">
     		<b>Research Groups:</b><br>
